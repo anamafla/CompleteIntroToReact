@@ -1,6 +1,7 @@
 import React from "react";
 import pf from "petfinder-client";
 import Carousel from "./Carousel";
+import { navigate } from "@reach/router";
 
 const petfinder = pf({
   key: process.env.API_KEY,
@@ -34,7 +35,9 @@ class Details extends React.Component {
           loading: false
         });
       })
-      .catch(err => this.setState({ error: err }));
+      .catch(() => {
+        navigate("/");
+      });
   }
 
   render() {
