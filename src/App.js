@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Results from "./Results";
 import pf from "petfinder-client";
-import { Router, Link } from "@reach/router";
+import { Router } from "@reach/router";
 import { Provider } from "./SearchContext";
 import Details from "./Details";
+import NavBar from "./NavBar";
 import SearchParams from "./SearchParams";
 
 const petfinder = pf({
@@ -77,14 +78,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <header>
-          <Link to="/"> Adopt Me! </Link>
-          <Link to="/search-params">
-            <span aria-label="search" role="img">
-              🔍
-            </span>
-          </Link>
-        </header>
+        <NavBar />
         <Provider value={this.state}>
           <Router>
             <SearchParams path="/search-params" />
